@@ -36,10 +36,11 @@ const Home: FC<Props> = ({ mode = 'trending', search }) => {
   });
 
   const activeRes = isSearchingMode ? searching : trending;
+  const title = isSearchingMode ? 'Searching' : 'Trending';
 
   return (
     <div className="home">
-      <h2>Trending</h2>
+      <h2>{title}</h2>
       <div>
         <h3 className="home__subTitle">Movie</h3>
         <div>

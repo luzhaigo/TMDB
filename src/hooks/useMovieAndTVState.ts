@@ -21,11 +21,13 @@ export const useMovieAndTVState = <T, U, R1, R2>({
   const movieSWR = useSWRImmutable(
     movie.key ? [movie.key, { ...movie.params, page: moviePage }] : null,
     ([, args]) => movie.fetcher(args as T & { page: number }) as Awaited<R1>,
+    { keepPreviousData: true },
   );
 
   const tvSWR = useSWRImmutable(
     tv.key ? [tv.key, { ...tv.params, page: tvPage }] : null,
     ([, args]) => tv.fetcher(args as U & { page: number }) as Awaited<R2>,
+    { keepPreviousData: true },
   );
 
   return {

@@ -19,16 +19,14 @@
 }
 
 .cardGrid__pagination {
-  margin: 24px 0;
+  margin: 24px auto;
 }
 
 ul.react-paginate {
-  margin-bottom: 2rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   list-style-type: none;
-  padding: 0 5rem;
+  padding: 0;
 }
 
 ul.react-paginate li a {
@@ -37,6 +35,7 @@ ul.react-paginate li a {
   border: gray 1px solid;
   cursor: pointer;
   color: #000000de;
+  margin: 0 4px;
 }
 ul.react-paginate li.previous a,
 ul.react-paginate li.next a,
