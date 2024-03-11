@@ -1,0 +1,29 @@
+.searchBox {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.searchBox__icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.searchBox__input {
+  border-radius: 16px;
+  width: 100px;
+  height: 40px;
+  border: none;
+  padding: 12px 12px 12px 32px;
+  transition: all 0.2s ease-in-out;
+  background-color: white;
+  color: #000000de;
+}
+
+.searchBox__input:focus {
+  outline: none;
+  box-shadow: 0px 0px 25px 5px #c3c3c3;
+  width: 200px;
+}

@@ -20,11 +20,14 @@ const Card: FC<Props> = ({ title, imgSrc, date, voteAverage, voteCount }) => {
     [date],
   );
   return (
-    <div className="card">
+    <div className="card" tabIndex={0}>
       <img
-        className="card__bg"
+        loading="lazy"
+        className="card__poster"
         src={`https://image.tmdb.org/t/p/w92/${imgSrc}`}
         alt={title}
+        width="92"
+        height="138"
       />
       <div className="card__info">
         <div className="card_title">{title}</div>
