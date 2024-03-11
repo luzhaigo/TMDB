@@ -1,0 +1,13 @@
+.home {
+  flex: 1;
+  padding: 12px 20px;
+  overflow-y: scroll;
+}
+
+.home h2 {
+  margin-bottom: 16px;
+}
+
+.home__subTitle {
+  margin-bottom: 24px;
+}

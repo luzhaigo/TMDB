@@ -1,0 +1,58 @@
+.cardGrid {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardGrid__loading {
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardGrid__list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  margin: 0;
+  gap: 16px;
+}
+
+.cardGrid__pagination {
+  margin: 24px 0;
+}
+
+ul.react-paginate {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0 5rem;
+}
+
+ul.react-paginate li a {
+  border-radius: 7px;
+  padding: 0.1rem 1rem;
+  border: gray 1px solid;
+  cursor: pointer;
+  color: #000000de;
+}
+ul.react-paginate li.previous a,
+ul.react-paginate li.next a,
+ul.react-paginate li.break a {
+  border-color: transparent;
+}
+ul.react-paginate li.selected a {
+  background-color: #c3c3c3;
+  border-color: transparent;
+  color: white;
+  min-width: 32px;
+}
+ul.react-paginate li.disabled a {
+  color: grey;
+}
+ul.react-paginate li.disable,
+ul.react-paginate li.disabled a {
+  cursor: default;
+}
