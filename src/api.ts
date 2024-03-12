@@ -11,8 +11,7 @@ import { Language } from '@/costants';
 const api = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
   headers: {
-    Authorization:
-      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjkxNmFiODY4MDk3MDFlYmY2YWFhYjQ4NWZiNTcyOSIsInN1YiI6IjY1ZWUzNDA4YmExMzFiMDE3YmFiZGM1OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JubuvihaQBXAzv-iZQsd1Kjkfdk4IUtNh44q6vrFPf4',
+    Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}`,
   },
 });
 
