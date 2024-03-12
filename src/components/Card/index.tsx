@@ -12,15 +12,23 @@ type Props = {
   date?: string;
   voteAverage: number;
   voteCount: number;
+  onClick?: () => void;
 };
 
-const Card: FC<Props> = ({ title, imgSrc, date, voteAverage, voteCount }) => {
+const Card: FC<Props> = ({
+  title,
+  imgSrc,
+  date,
+  voteAverage,
+  voteCount,
+  onClick,
+}) => {
   const year = useMemo(
     () => (date ? new Date(date).getUTCFullYear() : '--'),
     [date],
   );
   return (
-    <div className="card" tabIndex={0}>
+    <div className="card" onClick={onClick}>
       <img
         loading="lazy"
         className="card__poster"
@@ -30,7 +38,7 @@ const Card: FC<Props> = ({ title, imgSrc, date, voteAverage, voteCount }) => {
         height="138"
       />
       <div className="card__info">
-        <div className="card_title">{title}</div>
+        <div className="card__title">{title}</div>
         <div className="card__meta">
           <div>{year}</div>
         </div>
