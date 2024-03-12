@@ -8,6 +8,10 @@
   margin-bottom: 16px;
 }
 
+.home__content {
+  margin: 0 16px;
+}
+
 .home__subTitle {
   margin-bottom: 24px;
 }

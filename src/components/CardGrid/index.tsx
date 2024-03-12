@@ -1,4 +1,10 @@
-import { ReactNode, useCallback } from 'react';
+import {
+  ReactNode,
+  useCallback,
+  useRef,
+  ElementRef,
+  KeyboardEvent,
+} from 'react';
 import ReactPaginate from 'react-paginate';
 import Loading from '@/components/Loading';
 import './cardGrid.css';
@@ -20,10 +26,31 @@ const CardGrid = <T extends { id: number | string }>({
   data,
   render,
 }: Props<T>) => {
+  const ulRef = useRef<ElementRef<'ul'>>(null);
   const handlePageChange = useCallback(
     ({ selected }: { selected: number }) => onPageChange?.(selected + 1),
     [onPageChange],
   );
+
+  const handleKeyPress = useCallback((e: KeyboardEvent<HTMLUListElement>) => {
+    const activeElement = document.activeElement;
+
+    if (!activeElement?.classList.contains('card') || !ulRef.current) return;
+
+    let index = [...ulRef.current.childNodes].findIndex(
+      (node) => node.firstChild === document.activeElement,
+    );
+    if (index === -1) return;
+
+    if (e.key === 'Enter') {
+      return;
+    }
+
+    const arrow = { ArrowLeft: -1, ArrowRight: 1, ArrowUp: -5, ArrowDown: 5 };
+    index = (index + arrow[e.key as keyof typeof arrow] + 20) % 20;
+
+    (ulRef.current.childNodes[index].firstChild as HTMLElement)?.focus();
+  }, []);
 
   return (
     <div className="cardGrid">
@@ -33,7 +60,7 @@ const CardGrid = <T extends { id: number | string }>({
         </div>
       )}
       {loading === false && (
-        <ul className="cardGrid__list">
+        <ul ref={ulRef} className="cardGrid__list" onKeyDown={handleKeyPress}>
           {data?.map((item, index) => {
             return <li key={item.id}>{render(item, index)}</li>;
           })}
