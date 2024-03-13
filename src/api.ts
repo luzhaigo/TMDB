@@ -13,7 +13,7 @@ import {
 import { Language } from '@/costants';
 
 const api = axios.create({
-  baseURL: 'https://api.themoviedb.org/3',
+  baseURL: import.meta.env.VITE_API_PATH,
   headers: {
     Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}`,
   },
