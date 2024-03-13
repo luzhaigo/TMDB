@@ -1,30 +1,23 @@
-# React + TypeScript + Vite
+## Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+You can access the website via [TMDB](https://luzhaigo.github.io/TMDB/).
 
-Currently, two official plugins are available:
+## Done
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### App Features
 
-## Expanding the ESLint configuration
+- The app should have a "home" page displaying trending films and TV shows in two different rails.
+- Users can search for films and TV shows using the search bar in the top right corner.
+- Users should be able to view detailed information for any given film, including cast, description, rating, release date, etc.
+- Users should also be able to view detailed information for any TV show, including number of seasons, cast, rating, etc.
+- Navigation within the app should be possible using the arrow keys and the Enter key on a keyboard, with components displaying a focus state to highlight the user's current position.
+- Users can retrieve previous data from the SWR cache.
+- Configuration data should be preloaded in the critical rendering path via link tags and the SWR preload function.
+- Preconnection to the API domain should be established as soon as possible to reduce the latency of API responses.
+- Below-the-fold images should be lazy loaded to improve latency.
+- React components should be tested using testing-library/react.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Others
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Development of the app is done using ESLint and Vite.
+- Environment variables are used to inject sensitive or nonsensitive data when building the app.
