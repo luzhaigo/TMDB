@@ -15,6 +15,8 @@ type Props = ReactModalProps & {
 };
 
 const DetailsModal: FC<Props> = ({ isOpen, activeId, mediaType, onClose }) => {
+  const configSWR = useSWRImmutable('/configuration', API.getConfiguration);
+
   const movieSWR = useSWRImmutable(
     mediaType === 'movie' ? [`/movies/${activeId}`, activeId] : null,
     ([, id]) => API.getMovieDetailsById(id),
@@ -99,7 +101,7 @@ const DetailsModal: FC<Props> = ({ isOpen, activeId, mediaType, onClose }) => {
               <img
                 loading="lazy"
                 className="card__poster"
-                src={`https://image.tmdb.org/t/p/w92/${imgSrc}`}
+                src={`${configSWR.data?.images.secure_base_url}${configSWR.data?.images.poster_sizes[0]}/${imgSrc}`}
                 alt={title}
                 width="92"
                 height="138"

@@ -29,7 +29,7 @@ const Card: FC<Props> = ({
         <img
           loading="lazy"
           className="card__poster"
-          src={`https://image.tmdb.org/t/p/w92/${imgSrc}`}
+          src={imgSrc}
           alt={title}
           width="92"
           height="138"

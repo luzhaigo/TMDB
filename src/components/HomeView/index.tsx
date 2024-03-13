@@ -8,9 +8,10 @@ import './homeView.css';
 type Props = {
   mode?: 'trending' | 'searching';
   search?: string;
+  imgPrefix: string;
 };
 
-const Home: FC<Props> = ({ mode = 'trending', search }) => {
+const Home: FC<Props> = ({ mode = 'trending', search, imgPrefix }) => {
   const isSearchingMode = mode === 'searching';
   const trending = useMediaLists({
     movie: {
@@ -62,7 +63,7 @@ const Home: FC<Props> = ({ mode = 'trending', search }) => {
                 return (
                   <Card
                     title={media.original_title}
-                    imgSrc={media.poster_path}
+                    imgSrc={`${imgPrefix}/${media.poster_path}`}
                     date={media.release_date}
                     voteAverage={media.vote_average}
                     voteCount={media.vote_count}
@@ -86,7 +87,7 @@ const Home: FC<Props> = ({ mode = 'trending', search }) => {
                 return (
                   <Card
                     title={media.original_name}
-                    imgSrc={media.poster_path}
+                    imgSrc={`${imgPrefix}/${media.poster_path}`}
                     date={media.first_air_date}
                     voteAverage={media.vote_average}
                     voteCount={media.vote_count}

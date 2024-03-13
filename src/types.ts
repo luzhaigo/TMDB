@@ -9,6 +9,19 @@ export type Pagination<T> = {
   total_results: number;
 };
 
+export type Configuration = {
+  images: {
+    base_url: string;
+    secure_base_url: string;
+    backdrop_sizes: string[];
+    logo_sizes: string[];
+    poster_sizes: string[];
+    profile_sizes: string[];
+    still_sizes: string[];
+  };
+  change_keys: string[];
+};
+
 export type MediaType = 'tv' | 'movie' | 'person';
 
 type ImagePath = string | null;

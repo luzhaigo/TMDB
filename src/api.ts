@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
   PartialConstraint,
+  Configuration,
   TrendingQuery,
   GetMoviesData,
   GetTVsData,
@@ -17,6 +18,10 @@ const api = axios.create({
     Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}`,
   },
 });
+
+export const getConfiguration = async () => {
+  return api.get<Configuration>(`/configuration`).then((res) => res.data);
+};
 
 export const getTrendingMovies = async (
   {
