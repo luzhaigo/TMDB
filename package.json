@@ -19,6 +19,7 @@
     "swr": "^2.2.5"
   },
   "devDependencies": {
+    "@types/node": "^20.11.27",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@types/react-modal": "^3.16.3",
