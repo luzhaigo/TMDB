@@ -1,4 +1,5 @@
 import { FC, useMemo } from 'react';
+import LazyImage from '@/components/LazyImage';
 import RatingDisplay from '@/components/RatingDisplay';
 import './card.css';
 
@@ -23,10 +24,11 @@ const Card: FC<Props> = ({
     () => (date ? new Date(date).getUTCFullYear() : '--'),
     [date],
   );
+
   return (
     <div className="card" onClick={onClick}>
       {imgSrc && (
-        <img
+        <LazyImage
           loading="lazy"
           className="card__poster"
           src={imgSrc}
