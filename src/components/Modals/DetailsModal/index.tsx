@@ -28,7 +28,7 @@ const DetailsModal: FC<Props> = ({ isOpen, activeId, mediaType, onClose }) => {
 
   let title,
     imgSrc,
-    date,
+    date: unknown,
     runtime,
     genres,
     voteAverage,
@@ -74,12 +74,12 @@ const DetailsModal: FC<Props> = ({ isOpen, activeId, mediaType, onClose }) => {
   }
 
   const year = useMemo(
-    () => (date ? new Date(date).getUTCFullYear() : '--'),
+    () => (date ? new Date(date as string).getUTCFullYear() : '--'),
     [date],
   );
 
   return (
-    <Modal isOpen={isOpen} className="detailsModal">
+    <Modal isOpen={isOpen} className="detailsModal" onRequestClose={onClose}>
       {loading && <Loading />}
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -125,13 +125,15 @@ const DetailsModal: FC<Props> = ({ isOpen, activeId, mediaType, onClose }) => {
                   </div>
                 ))}
               </div>
-              <div className="detailsModal__rating">
-                <RatingDisplay
-                  size="l"
-                  voteAverage={voteAverage}
-                  voteCount={voteCount}
-                />
-              </div>
+              {voteAverage != null && voteCount != null && (
+                <div className="detailsModal__rating">
+                  <RatingDisplay
+                    size="l"
+                    voteAverage={voteAverage}
+                    voteCount={voteCount}
+                  />
+                </div>
+              )}
             </div>
           </div>
           <div className="detailsModal__overview">{overview}</div>
