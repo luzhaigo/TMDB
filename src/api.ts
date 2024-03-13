@@ -20,7 +20,11 @@ const api = axios.create({
 });
 
 export const getConfiguration = async () => {
-  return api.get<Configuration>(`/configuration`).then((res) => res.data);
+  return api
+    .get<Configuration>(
+      `/configuration?api_key=${import.meta.env.VITE_API_KEY}`,
+    )
+    .then((res) => res.data);
 };
 
 export const getTrendingMovies = async (

@@ -2,6 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="preconnect" href="{{VITE_API_HOST}}" />
+    <link
+      rel="preload"
+      href="{{VITE_API_PATH}}/configuration?api_key={{VITE_API_KEY}}"
+      as="fetch"
+      crossorigin="anonymous"
+    />
     <meta name="hash" content="{{COMMIT_HASH}}" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
