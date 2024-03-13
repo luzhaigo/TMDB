@@ -5,6 +5,7 @@
 
 .cardGrid__loading {
   height: 600px;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -16,6 +17,15 @@
   grid-template-columns: repeat(5, minmax(0, 1fr));
   margin: 0;
   gap: 16px;
+}
+
+.cardGrid__noData {
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .cardGrid__pagination {

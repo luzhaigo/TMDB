@@ -1,0 +1,109 @@
+.detailsModal {
+  position: absolute;
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255);
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 40px 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  font-size: 14px;
+  color: #000000d3;
+}
+
+.detailsModal__xmark {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.detailsModal__info {
+  height: 138px;
+  display: flex;
+}
+
+.detailsModal__meta {
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #0000008a;
+}
+
+.detailsModal__title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000d3;
+  margin: 14px 0 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+.detailsModal__metrics {
+  display: flex;
+}
+
+.detailsModal__metric::after,
+.detailsModal__genre::after,
+.detailsModal__name::after {
+  display: inline-block;
+  margin: 0 0.5rem 0.2rem;
+  content: '';
+  font-size: 1rem;
+  line-height: 0.5rem;
+  padding: 1px;
+  border-radius: 50%;
+  vertical-align: middle;
+  background-color: #0000008a;
+}
+
+.detailsModal__genres {
+  display: flex;
+}
+
+.detailsModal__metrics > .detailsModal__metric:last-of-type:after,
+.detailsModal__names > .detailsModal__name:last-of-type::after,
+.detailsModal__genres > .detailsModal__genre:last-of-type::after {
+  display: none;
+}
+
+.detailsModal__overview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  margin: 12px 0;
+}
+
+.detailsModal__namesGroup {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.detailsModal__namesGroupTitle {
+  font-weight: bold;
+  color: #000000d3;
+}
+
+.detailsModal__names {
+  margin-left: 12px;
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detailsModal__name {
+  display: flex;
+  align-items: center;
+}

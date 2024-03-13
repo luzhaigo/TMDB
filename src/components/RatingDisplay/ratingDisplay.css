@@ -1,0 +1,24 @@
+.ratingDisplay {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.ratingDisplay.size-l {
+  font-size: 16px;
+}
+
+.ratingDisplay__star {
+  color: #f5c518;
+  width: 12px;
+  height: 12px;
+}
+
+.ratingDisplay__star.size-l {
+  width: 16px;
+  height: 16px;
+}
+
+.ratingDisplay__voteAverage {
+  margin: 0 4px;
+}

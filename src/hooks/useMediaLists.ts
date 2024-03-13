@@ -8,7 +8,7 @@ type Args<T, U> = {
   page?: number;
 };
 
-export const useMovieAndTVState = <T, U, R1, R2>({
+export const useMediaLists = <T, U, R1, R2>({
   movie,
   tv,
 }: {

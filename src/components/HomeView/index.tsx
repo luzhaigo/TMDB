@@ -2,7 +2,7 @@ import { FC } from 'react';
 import CardGrid from '@/components/CardGrid';
 import Card from '@/components/Card';
 import * as API from '@/api';
-import { useMovieAndTVState } from '@/hooks/useMovieAndTVState';
+import { useMediaLists } from '@/hooks/useMediaLists';
 import './homeView.css';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 
 const Home: FC<Props> = ({ mode = 'trending', search }) => {
   const isSearchingMode = mode === 'searching';
-  const trending = useMovieAndTVState({
+  const trending = useMediaLists({
     movie: {
       key: '/trending/movies',
       fetcher: ({ page }) => API.getTrendingMovies({ page }),
@@ -22,7 +22,7 @@ const Home: FC<Props> = ({ mode = 'trending', search }) => {
       fetcher: ({ page }) => API.getTrendingTVs({ page }),
     },
   });
-  const searching = useMovieAndTVState({
+  const searching = useMediaLists({
     movie: {
       key: isSearchingMode ? '/search/movies' : null,
       params: search ? { query: search } : null,
@@ -36,7 +36,11 @@ const Home: FC<Props> = ({ mode = 'trending', search }) => {
   });
 
   const activeRes = isSearchingMode ? searching : trending;
-  const title = isSearchingMode ? 'Searching' : 'Trending';
+  const title = isSearchingMode
+    ? searching.movie.isLoading || searching.tv.isLoading
+      ? 'Searching ...'
+      : 'Searching Result'
+    : 'Trending';
 
   return (
     <div className="home">
@@ -49,18 +53,19 @@ const Home: FC<Props> = ({ mode = 'trending', search }) => {
               loading={
                 activeRes.movie.isLoading || activeRes.movie.error != null
               }
+              mediaType="movie"
               page={activeRes.movie.page}
               pageCount={activeRes.movie.data?.total_pages}
               data={activeRes.movie.data?.results}
               onPageChange={activeRes.movie.handlePageChange}
-              render={(item) => {
+              render={(media) => {
                 return (
                   <Card
-                    title={item.original_title}
-                    imgSrc={item.poster_path}
-                    date={item.release_date}
-                    voteAverage={item.vote_average}
-                    voteCount={item.vote_count}
+                    title={media.original_title}
+                    imgSrc={media.poster_path}
+                    date={media.release_date}
+                    voteAverage={media.vote_average}
+                    voteCount={media.vote_count}
                   />
                 );
               }}
@@ -72,18 +77,19 @@ const Home: FC<Props> = ({ mode = 'trending', search }) => {
           <div>
             <CardGrid
               loading={activeRes.tv.isLoading || activeRes.tv.error != null}
+              mediaType="tv"
               page={activeRes.tv.page}
               pageCount={activeRes.tv.data?.total_pages}
               data={activeRes.tv.data?.results}
               onPageChange={activeRes.tv.handlePageChange}
-              render={(item) => {
+              render={(media) => {
                 return (
                   <Card
-                    title={item.original_name}
-                    imgSrc={item.poster_path}
-                    date={item.first_air_date}
-                    voteAverage={item.vote_average}
-                    voteCount={item.vote_count}
+                    title={media.original_name}
+                    imgSrc={media.poster_path}
+                    date={media.first_air_date}
+                    voteAverage={media.vote_average}
+                    voteCount={media.vote_count}
                   />
                 );
               }}

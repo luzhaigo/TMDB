@@ -5,6 +5,9 @@ import {
   GetMoviesData,
   GetTVsData,
   SearchingQuery,
+  DetailsQuery,
+  MovieDetails,
+  TVDetails,
 } from '@/types';
 import { Language } from '@/costants';
 
@@ -56,3 +59,41 @@ export const searchTVs = async (
   api
     .get<GetTVsData>(`/search/tv?query=${query}&page=${page}`)
     .then((res) => res.data);
+
+export const getMovieDetailsById = async (
+  arg: DetailsQuery['id'] | PartialConstraint<DetailsQuery, 'language'>,
+) => {
+  let id, language;
+  if (typeof arg === 'number') {
+    id = arg;
+    language = Language;
+  } else {
+    id = arg.id;
+    language = arg.language || Language;
+  }
+
+  return api
+    .get<MovieDetails>(
+      `/movie/${id}?append_to_response=credits&language=${language}`,
+    )
+    .then((res) => res.data);
+};
+
+export const getTVDetailsById = async (
+  arg: DetailsQuery['id'] | PartialConstraint<DetailsQuery, 'language'>,
+) => {
+  let id, language;
+  if (typeof arg === 'number') {
+    id = arg;
+    language = Language;
+  } else {
+    id = arg.id;
+    language = arg.language || Language;
+  }
+
+  return api
+    .get<TVDetails>(
+      `/tv/${id}?append_to_response=aggregate_credits&language=${language}`,
+    )
+    .then((res) => res.data);
+};

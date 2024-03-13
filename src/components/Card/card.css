@@ -6,15 +6,16 @@
   transition: all 0.2s ease-in-out;
   font-size: 14px;
   color: #0000008a;
+  height: 100%;
 }
 
-.cardGrid__list li[data-item]:focus,
-.cardGrid__list li[data-item]:focus-visible {
+.cardGrid__list li[data-media]:focus,
+.cardGrid__list li[data-media]:focus-visible {
   outline: none;
 }
 
-.cardGrid__list li[data-item] .card:hover,
-.cardGrid__list li[data-item]:focus .card {
+.cardGrid__list li[data-media] .card:hover,
+.cardGrid__list li[data-media]:focus .card {
   transform: scale(1.04);
   outline: none;
   box-shadow: 0px 0px 5px 5px #c3c3c3;
@@ -42,19 +43,4 @@
 
 .card__meta {
   margin: 12px 0;
-}
-
-.card__rating {
-  display: flex;
-  align-items: center;
-}
-
-.card__star {
-  color: #f5c518;
-  width: 12px;
-  height: 12px;
-}
-
-.card__voteAverage {
-  margin: 0 4px;
 }
