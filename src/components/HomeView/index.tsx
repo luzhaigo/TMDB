@@ -1,9 +1,18 @@
 import { FC } from 'react';
+import { preload } from 'swr';
 import CardGrid from '@/components/CardGrid';
 import Card from '@/components/Card';
 import * as API from '@/api';
 import { useMediaLists } from '@/hooks/useMediaLists';
 import './homeView.css';
+
+const preloadMovieCardDetails = (id: string | number) =>
+  preload([`/movies/${id}`, id], ([, id]) =>
+    API.getMovieDetailsById(id as number),
+  );
+
+const preloadTVCardDetails = (id: string | number) =>
+  preload([`/tvs/${id}`, id], ([, id]) => API.getTVDetailsById(id as number));
 
 type Props = {
   mode?: 'trending' | 'searching';
@@ -64,13 +73,19 @@ const Home: FC<Props> = ({ mode = 'trending', search, imgPrefix }) => {
                   <Card
                     loading="eager"
                     title={media.original_title}
-                    imgSrc={`${imgPrefix}/${media.poster_path}`}
+                    imgSrc={
+                      media.poster_path
+                        ? `${imgPrefix}/${media.poster_path}`
+                        : undefined
+                    }
                     date={media.release_date}
                     voteAverage={media.vote_average}
                     voteCount={media.vote_count}
                   />
                 );
               }}
+              onCardFocus={preloadMovieCardDetails}
+              onCardEnter={preloadMovieCardDetails}
             />
           </div>
         </div>
@@ -89,13 +104,19 @@ const Home: FC<Props> = ({ mode = 'trending', search, imgPrefix }) => {
                   <Card
                     loading="lazy"
                     title={media.original_name}
-                    imgSrc={`${imgPrefix}/${media.poster_path}`}
+                    imgSrc={
+                      media.poster_path
+                        ? `${imgPrefix}/${media.poster_path}`
+                        : undefined
+                    }
                     date={media.first_air_date}
                     voteAverage={media.vote_average}
                     voteCount={media.vote_count}
                   />
                 );
               }}
+              onCardFocus={preloadTVCardDetails}
+              onCardEnter={preloadTVCardDetails}
             />
           </div>
         </div>

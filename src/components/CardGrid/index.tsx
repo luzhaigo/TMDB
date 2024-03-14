@@ -24,6 +24,8 @@ type Props<T> = {
   render: (media: T, index: number) => ReactNode;
   pageSize?: number;
   columnCount?: number;
+  onCardFocus?: (id: Id) => void;
+  onCardEnter?: (id: Id) => void;
 };
 
 type Id = number | string;
@@ -39,6 +41,8 @@ const CardGrid = <T extends { id: Id }>({
   render,
   pageSize = 20,
   columnCount = ColumnCount,
+  onCardFocus,
+  onCardEnter,
 }: Props<T>) => {
   const ulRef = useRef<ElementRef<'ul'>>(null);
   const [activeId, setActiveId] = useState<Id | null>(null);
@@ -119,7 +123,13 @@ const CardGrid = <T extends { id: Id }>({
                   tabIndex={0}
                   data-media={index}
                   onClick={toggleOn}
-                  onFocus={() => setActiveId(media.id)}
+                  onFocus={() => {
+                    setActiveId(media.id);
+                    onCardFocus?.(media.id);
+                  }}
+                  onMouseEnter={
+                    onCardEnter ? () => onCardEnter(media.id) : undefined
+                  }
                   onBlur={() => {
                     if (activeId === media.id) return;
                     setActiveId(null);

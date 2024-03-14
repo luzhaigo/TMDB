@@ -69,7 +69,7 @@ const DetailsModal: FC<Props> = ({ isOpen, activeId, mediaType, onClose }) => {
     voteCount = tvSWR.data?.vote_count;
     overview = tvSWR.data?.overview;
     seasons = tvSWR.data?.number_of_seasons;
-    creators = tvSWR.data?.created_by.map(({ name }) => name);
+    creators = tvSWR.data?.created_by?.map(({ name }) => name);
     stars = tvSWR.data?.aggregate_credits.cast
       .map(({ name }) => name)
       .slice(0, 4);
@@ -97,7 +97,7 @@ const DetailsModal: FC<Props> = ({ isOpen, activeId, mediaType, onClose }) => {
       {loading === false && (
         <div>
           <div className="detailsModal__info">
-            {imgSrc && (
+            {imgSrc ? (
               <img
                 loading="lazy"
                 className="card__poster"
@@ -106,6 +106,8 @@ const DetailsModal: FC<Props> = ({ isOpen, activeId, mediaType, onClose }) => {
                 width="92"
                 height="138"
               />
+            ) : (
+              <div className="detailsModal__imgPlaceholder" />
             )}
             <div className="detailsModal__meta">
               <h3 className="detailsModal__title">{title}</h3>

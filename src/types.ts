@@ -125,7 +125,7 @@ export type MovieDetails = {
 export type TVDetails = {
   adult: boolean;
   backdrop_path: ImagePath;
-  created_by: {
+  created_by?: {
     id: number;
     credit_id: string;
     name: string;

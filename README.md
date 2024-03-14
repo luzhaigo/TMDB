@@ -15,6 +15,7 @@ You can access the website via [TMDB](https://luzhaigo.github.io/TMDB/).
 - Configuration data should be preloaded in the critical rendering path via link tags and the SWR preload function.
 - Preconnection to the API domain should be established as soon as possible to reduce the latency of API responses.
 - Below-the-fold images should be lazy loaded to improve latency.
+- Media details should be preloaded when hovering over cards or navigating with arrow keys.
 - React components should be tested using testing-library/react.
 
 ### Others

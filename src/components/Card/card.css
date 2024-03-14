@@ -9,6 +9,11 @@
   height: 100%;
 }
 
+.card__imgPlaceholder {
+  width: 92px;
+  height: 138px;
+}
+
 .cardGrid__list li[data-media]:focus,
 .cardGrid__list li[data-media]:focus-visible {
   outline: none;

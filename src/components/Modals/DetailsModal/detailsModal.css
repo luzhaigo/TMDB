@@ -27,6 +27,10 @@
   display: flex;
 }
 
+.detailsModal__imgPlaceholder {
+  width: 92px;
+}
+
 .detailsModal__meta {
   padding: 0 12px;
   display: flex;

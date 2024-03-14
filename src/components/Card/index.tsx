@@ -5,7 +5,7 @@ import './card.css';
 
 type Props = Pick<ImgHTMLAttributes<HTMLImageElement>, 'loading'> & {
   title: string;
-  imgSrc: string | null;
+  imgSrc?: string;
   date?: string;
   voteAverage: number;
   voteCount: number;
@@ -28,7 +28,7 @@ const Card: FC<Props> = ({
 
   return (
     <div className="card" onClick={onClick}>
-      {imgSrc && (
+      {imgSrc ? (
         <LazyImage
           loading={loading}
           className="card__poster"
@@ -37,6 +37,8 @@ const Card: FC<Props> = ({
           width="92"
           height="138"
         />
+      ) : (
+        <div className="card__imgPlaceholder" />
       )}
       <div className="card__info">
         <div className="card__title" title={title}>
