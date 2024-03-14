@@ -1,9 +1,9 @@
-import { FC, useMemo } from 'react';
+import { FC, useMemo, ImgHTMLAttributes } from 'react';
 import LazyImage from '@/components/LazyImage';
 import RatingDisplay from '@/components/RatingDisplay';
 import './card.css';
 
-type Props = {
+type Props = Pick<ImgHTMLAttributes<HTMLImageElement>, 'loading'> & {
   title: string;
   imgSrc: string | null;
   date?: string;
@@ -13,6 +13,7 @@ type Props = {
 };
 
 const Card: FC<Props> = ({
+  loading,
   title,
   imgSrc,
   date,
@@ -29,7 +30,7 @@ const Card: FC<Props> = ({
     <div className="card" onClick={onClick}>
       {imgSrc && (
         <LazyImage
-          loading="lazy"
+          loading={loading}
           className="card__poster"
           src={imgSrc}
           alt={title}

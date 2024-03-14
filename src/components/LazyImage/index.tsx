@@ -4,11 +4,18 @@ type Props = ImgHTMLAttributes<HTMLImageElement> & {
   options?: IntersectionObserverInit;
 };
 
-const LazyImage: FC<Props> = ({ src, alt, loading, options, ...rest }) => {
+const LazyImage: FC<Props> = ({
+  src,
+  alt,
+  loading = 'lazy',
+  options,
+  ...rest
+}) => {
   const ref = useRef<ElementRef<'img'>>(null);
+  const isLazy = loading === 'lazy';
 
   useEffect(() => {
-    if (!ref.current || loading !== 'lazy') return;
+    if (!ref.current || !isLazy) return;
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -23,16 +30,17 @@ const LazyImage: FC<Props> = ({ src, alt, loading, options, ...rest }) => {
 
     observer.observe(ref.current);
 
-    return observer.disconnect;
+    return () => observer.disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, options?.root, options?.rootMargin, options?.threshold]);
+  }, [isLazy, options?.root, options?.rootMargin, options?.threshold]);
 
   return (
     <img
       ref={ref}
       {...rest}
+      src={isLazy ? undefined : src}
       data-src={src}
-      alt=""
+      alt={isLazy ? '' : alt}
       data-alt={alt}
       loading={loading}
     />

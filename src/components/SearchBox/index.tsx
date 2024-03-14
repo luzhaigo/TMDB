@@ -6,7 +6,7 @@ export type Props = {
 };
 
 const SearchBox: FC<Props> = ({ onSearch }) => {
-  const [search, setSearch] = useState<string>();
+  const [search, setSearch] = useState<string>('');
 
   const clearInput = useCallback(() => {
     setSearch('');

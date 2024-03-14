@@ -62,6 +62,7 @@ const Home: FC<Props> = ({ mode = 'trending', search, imgPrefix }) => {
               render={(media) => {
                 return (
                   <Card
+                    loading="eager"
                     title={media.original_title}
                     imgSrc={`${imgPrefix}/${media.poster_path}`}
                     date={media.release_date}
@@ -86,6 +87,7 @@ const Home: FC<Props> = ({ mode = 'trending', search, imgPrefix }) => {
               render={(media) => {
                 return (
                   <Card
+                    loading="lazy"
                     title={media.original_name}
                     imgSrc={`${imgPrefix}/${media.poster_path}`}
                     date={media.first_air_date}
