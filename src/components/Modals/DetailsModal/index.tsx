@@ -89,6 +89,8 @@ const DetailsModal: FC<Props> = ({ isOpen, activeId, mediaType, onClose }) => {
         width="40"
         height="40"
         className="detailsModal__xmark"
+        role="presentation"
+        data-testid="x-mark"
         tabIndex={0}
         onClick={onClose}
       >

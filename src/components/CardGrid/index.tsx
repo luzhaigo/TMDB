@@ -106,6 +106,8 @@ const CardGrid = <T extends { id: Id }>({
         (data && data?.length !== 0 ? (
           <ul
             ref={ulRef}
+            role="presentation"
+            data-testid="cards"
             className="cardGrid__list"
             onKeyDown={handleKeyDown}
             style={

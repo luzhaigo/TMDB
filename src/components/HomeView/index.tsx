@@ -54,7 +54,7 @@ const Home: FC<Props> = ({ mode = 'trending', search, imgPrefix }) => {
 
   return (
     <div className="home">
-      <h2>{title}</h2>
+      <h2 data-testid="home-title">{title}</h2>
       <div className="home__content">
         <div>
           <h3 className="home__subTitle">Movie</h3>
@@ -90,7 +90,7 @@ const Home: FC<Props> = ({ mode = 'trending', search, imgPrefix }) => {
           </div>
         </div>
         <div>
-          <h2>TV</h2>
+          <h3>TV</h3>
           <div>
             <CardGrid
               loading={activeRes.tv.isLoading || activeRes.tv.error != null}

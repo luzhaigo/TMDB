@@ -6,5 +6,6 @@ export const ratingFormatter = new Intl.NumberFormat(Language, {
 });
 
 export const timeFormatter = (mins: number) => {
-  return `${mins / 60 > 0 ? `${Math.ceil(mins / 60)}h ` : ''} ${mins % 60}min`;
+  const quotient = Math.trunc(mins / 60);
+  return `${quotient > 0 ? `${quotient}h ` : ''}${mins % 60}min`;
 };

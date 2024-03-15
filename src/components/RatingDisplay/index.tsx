@@ -13,7 +13,10 @@ const RatingDisplay: FC<Props> = ({ size = 'm', voteAverage, voteCount }) => {
   const isSizeL = size === 'l';
 
   return (
-    <div className={cls('ratingDisplay', { 'size-l': isSizeL })}>
+    <div
+      className={cls('ratingDisplay', { 'size-l': isSizeL })}
+      data-testid="rating"
+    >
       <svg
         width="24"
         height="24"

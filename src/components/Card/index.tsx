@@ -41,10 +41,10 @@ const Card: FC<Props> = ({
         <div className="card__imgPlaceholder" />
       )}
       <div className="card__info">
-        <div className="card__title" title={title}>
+        <h4 className="card__title" title={title}>
           {title}
-        </div>
-        <div className="card__meta">
+        </h4>
+        <div className="card__meta" data-testid="card-year">
           <div>{year}</div>
         </div>
         <RatingDisplay voteAverage={voteAverage} voteCount={voteCount} />

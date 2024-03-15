@@ -18,9 +18,15 @@
   align-items: center;
 }
 
+.navbar__githubAnchor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
 .navbar__github {
   width: 24px;
   height: 24px;
   cursor: pointer;
-  margin-left: 12px;
 }

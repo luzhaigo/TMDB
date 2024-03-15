@@ -22,5 +22,13 @@ export default defineConfig(({ mode }) => {
   return {
     base: '/TMDB/',
     plugins: [react(), tsconfigPaths(), htmlPlugin()],
+    test: {
+      globals: true,
+      environment: 'jsdom',
+      setupFiles: './src/setupTests.ts',
+      coverage: {
+        provider: 'istanbul',
+      },
+    },
   };
 });
